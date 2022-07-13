@@ -5,15 +5,22 @@ public class CarTO {
     private long id;
     private String type;
     private String brand;
-    private String year;
+    private String yearOfProduction;
 
+    private String color;
+    private String engineCapacity;
+    private String power;
+    private String mileage;
 
-    public CarTO(long id, String type, String model, String year) {
+    public CarTO(long id, String type, String brand, String yearOfProduction, String color, String engineCapacity, String power, String mileage) {
         this.id = id;
         this.type = type;
-        this.brand = type;
-        this.year = year;
-
+        this.brand = brand;
+        this.yearOfProduction = yearOfProduction;
+        this.color = color;
+        this.engineCapacity = engineCapacity;
+        this.power = power;
+        this.mileage = mileage;
     }
 
     public long getId() {
@@ -28,8 +35,23 @@ public class CarTO {
         return brand;
     }
 
-    public String getYear() {
-        return brand;
+    public String getYearOfProduction() {
+        return yearOfProduction;
     }
 
+    public String getColor() {
+        return color;
+    }
+
+    public String getEngineCapacity() {
+        return engineCapacity;
+    }
+
+    public String getPower() {
+        return power;
+    }
+
+    public String getMileage() {
+        return mileage;
+    }
 }

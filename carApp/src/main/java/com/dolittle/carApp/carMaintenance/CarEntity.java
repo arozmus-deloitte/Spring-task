@@ -6,27 +6,30 @@ import javax.persistence.Id;
 @Entity
 public class CarEntity {
     @Id
-    private Long id;
+    private long id;
     private String type;
-
     private String brand;
+    private String yearOfProduction;
+    private String color;
+    private String engineCapacity;
+    private String power;
+    private String mileage;
 
-    private String year;
-
-
-    public CarEntity(Long id, String type, String model, String year) {
+    public CarEntity(long id, String type, String brand, String yearOfProduction, String color, String engineCapacity, String power, String mileage) {
         this.id = id;
         this.type = type;
-        this.brand = model;
-        this.year = year;
+        this.brand = brand;
+        this.yearOfProduction = yearOfProduction;
+        this.color = color;
+        this.engineCapacity = engineCapacity;
+        this.power = power;
+        this.mileage = mileage;
     }
 
-
-    protected CarEntity() {
+    public CarEntity() {
     }
 
-
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
@@ -38,9 +41,23 @@ public class CarEntity {
         return brand;
     }
 
-    public String getYear() {
-        return year;
+    public String getYearOfProduction() {
+        return yearOfProduction;
     }
 
+    public String getColor() {
+        return color;
+    }
 
+    public String getEngineCapacity() {
+        return engineCapacity;
+    }
+
+    public String getPower() {
+        return power;
+    }
+
+    public String getMileage() {
+        return mileage;
+    }
 }

@@ -21,7 +21,14 @@ public class CarServiceImpl implements CarService {
     }
 
     private CarTO mapToCarTO(CarEntity carEntity) {
-        return new CarTO(carEntity.getId(), carEntity.getType(), carEntity.getBrand(), carEntity.getYear());
+        return new CarTO(carEntity.getId(),
+                carEntity.getType(),
+                carEntity.getBrand(),
+                carEntity.getYearOfProduction(),
+                carEntity.getColor(),
+                carEntity.getEngineCapacity(),
+                carEntity.getPower(),
+                carEntity.getMileage());
     }
 
 
