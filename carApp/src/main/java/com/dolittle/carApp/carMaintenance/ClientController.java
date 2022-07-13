@@ -1,17 +1,20 @@
 package com.dolittle.carApp.carMaintenance;
 
-import com.dolittle.carApp.carMaintenance.model.CarTO;
+import com.dolittle.carApp.carMaintenance.model.ClientTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-public class CarController {
-
+public class ClientController {
     @Autowired
-    private CarService carService;
+    private ClientService clientService;
 
-    @GetMapping("/cars")
-    public List<CarTO> getAllCars() {return carService.getAllCars();}
+    @GetMapping("/clients")
+    public List<ClientTO> getAllClients(){
+            return clientService.getAllClients();
+        }
 }
+
+
