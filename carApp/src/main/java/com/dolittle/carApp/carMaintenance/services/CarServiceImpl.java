@@ -1,5 +1,7 @@
-package com.dolittle.carApp.carMaintenance;
+package com.dolittle.carApp.carMaintenance.services;
 
+import com.dolittle.carApp.carMaintenance.DAO.CarDAO;
+import com.dolittle.carApp.carMaintenance.entities.CarEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.dolittle.carApp.carMaintenance.model.CarTO;

@@ -1,4 +1,4 @@
-package com.dolittle.carApp.carMaintenance;
+package com.dolittle.carApp.carMaintenance.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

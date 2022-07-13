@@ -1,4 +1,4 @@
-package com.dolittle.carApp.carMaintenance;
+package com.dolittle.carApp.carMaintenance.services;
 
 import java.util.List;
 
