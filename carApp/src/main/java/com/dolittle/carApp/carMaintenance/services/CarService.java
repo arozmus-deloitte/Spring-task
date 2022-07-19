@@ -10,4 +10,6 @@ public interface CarService {
     List<CarTO> getAllCars();
 
     CarEntity saveCar(CarTO carTO);
+
+    CarTO searchCarById(long id) throws Exception;
 }
