@@ -6,7 +6,6 @@ public class CarTO {
     private String type;
     private String brand;
     private String yearOfProduction;
-
     private String color;
     private String engineCapacity;
     private String power;
@@ -25,6 +24,10 @@ public class CarTO {
 
     public long getId() {
         return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getType() {

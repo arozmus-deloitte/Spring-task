@@ -1,4 +1,4 @@
-package com.dolittle.carApp.carMaintenance.controlles;
+package com.dolittle.carApp.carMaintenance.controllers;
 
 import com.dolittle.carApp.carMaintenance.model.ClientTO;
 import com.dolittle.carApp.carMaintenance.services.ClientService;
