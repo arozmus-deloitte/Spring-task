@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.dolittle.carApp.carMaintenance.entities.CarEntity;
 import com.dolittle.carApp.carMaintenance.model.CarTO;
+import org.springframework.http.ResponseEntity;
 
 public interface CarService {
 
@@ -12,4 +13,6 @@ public interface CarService {
     CarEntity saveCar(CarTO carTO);
 
     CarTO searchCarById(long id) throws Exception;
+
+    void deleteCar(long id);
 }

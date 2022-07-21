@@ -4,6 +4,7 @@ import com.dolittle.carApp.carMaintenance.DAO.CarDAO;
 import com.dolittle.carApp.carMaintenance.entities.CarEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.config.ConfigDataResourceNotFoundException;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import com.dolittle.carApp.carMaintenance.model.CarTO;
 
@@ -66,5 +67,11 @@ public class CarServiceImpl implements CarService {
         else {
             throw new Exception("Car not found");
         }
+    }
+
+    @Override
+    public void deleteCar(long id)
+    {
+        carDAO.deleteById(id);
     }
 }
