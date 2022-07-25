@@ -1,7 +1,6 @@
 package com.dolittle.carApp.carMaintenance.model;
 
 public class CarTO {
-
     private long id;
     private String type;
     private String brand;
@@ -10,6 +9,7 @@ public class CarTO {
     private String engineCapacity;
     private String power;
     private String mileage;
+    private ClientTO client;
 
     public CarTO(long id, String type, String brand, String yearOfProduction, String color, String engineCapacity, String power, String mileage) {
         this.id = id;
@@ -56,5 +56,13 @@ public class CarTO {
 
     public String getMileage() {
         return mileage;
+    }
+
+    public void setClient(ClientTO client) {
+        this.client = client;
+    }
+
+    public ClientTO getClient() {
+        return client;
     }
 }

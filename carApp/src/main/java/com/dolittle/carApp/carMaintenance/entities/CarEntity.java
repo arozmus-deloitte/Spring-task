@@ -1,5 +1,7 @@
 package com.dolittle.carApp.carMaintenance.entities;
 
+import com.dolittle.carApp.carMaintenance.model.ClientTO;
+
 import javax.persistence.*;
 
 @Entity
@@ -15,6 +17,8 @@ public class CarEntity {
     private String engineCapacity;
     private String power;
     private String mileage;
+    @OneToOne
+    private ClientEntity client;
 
     public CarEntity(long id, String type, String brand, String yearOfProduction, String color, String engineCapacity, String power, String mileage) {
         this.id = id;
@@ -60,5 +64,9 @@ public class CarEntity {
 
     public String getMileage() {
         return mileage;
+    }
+
+    public ClientEntity getClient() {
+        return client;
     }
 }
