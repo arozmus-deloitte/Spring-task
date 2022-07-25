@@ -9,9 +9,9 @@ public class CarTO {
     private String engineCapacity;
     private String power;
     private String mileage;
-    private ClientTO client;
+    private long clientId;
 
-    public CarTO(long id, String type, String brand, String yearOfProduction, String color, String engineCapacity, String power, String mileage) {
+    public CarTO(long id, String type, String brand, String yearOfProduction, String color, String engineCapacity, String power, String mileage, long clientId) {
         this.id = id;
         this.type = type;
         this.brand = brand;
@@ -20,6 +20,7 @@ public class CarTO {
         this.engineCapacity = engineCapacity;
         this.power = power;
         this.mileage = mileage;
+        this.clientId = clientId;
     }
 
     public long getId() {
@@ -58,11 +59,11 @@ public class CarTO {
         return mileage;
     }
 
-    public void setClient(ClientTO client) {
-        this.client = client;
+    public long getClientId() {
+        return clientId;
     }
 
-    public ClientTO getClient() {
-        return client;
+    public void setClientId(long clientId) {
+        this.clientId = clientId;
     }
 }

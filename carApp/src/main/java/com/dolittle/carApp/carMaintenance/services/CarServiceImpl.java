@@ -2,9 +2,9 @@ package com.dolittle.carApp.carMaintenance.services;
 
 import com.dolittle.carApp.carMaintenance.DAO.CarDAO;
 import com.dolittle.carApp.carMaintenance.entities.CarEntity;
+import com.dolittle.carApp.carMaintenance.entities.ClientEntity;
+import com.dolittle.carApp.carMaintenance.model.ClientTO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.config.ConfigDataResourceNotFoundException;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import com.dolittle.carApp.carMaintenance.model.CarTO;
 
@@ -29,6 +29,7 @@ public class CarServiceImpl implements CarService {
     }
 
     private CarTO mapToCarTO(CarEntity carEntity) {
+
         return new CarTO(
                 carEntity.getId(),
                 carEntity.getType(),
@@ -37,7 +38,8 @@ public class CarServiceImpl implements CarService {
                 carEntity.getColor(),
                 carEntity.getEngineCapacity(),
                 carEntity.getPower(),
-                carEntity.getMileage());
+                carEntity.getMileage(),
+                carEntity.getClientId());
     }
 
     @Override
@@ -46,6 +48,7 @@ public class CarServiceImpl implements CarService {
     }
 
     private CarEntity mapToCarEntity(CarTO carTO) {
+
         return new CarEntity(
                 carTO.getId(),
                 carTO.getType(),
@@ -54,8 +57,10 @@ public class CarServiceImpl implements CarService {
                 carTO.getColor(),
                 carTO.getEngineCapacity(),
                 carTO.getPower(),
-                carTO.getMileage());
+                carTO.getMileage(),
+                carTO.getClientId());
     }
+
 
     @Override
     public CarTO searchCarById(long id) throws Exception {
@@ -73,5 +78,12 @@ public class CarServiceImpl implements CarService {
     public void deleteCar(long id)
     {
         carDAO.deleteById(id);
+    }
+
+    @Override
+    public void assignClientToCar(CarTO carTO, long clientId) {
+        CarEntity carEntity = mapToCarEntity(carTO);
+        carEntity.setClientId(clientId);
+        carDAO.save(carEntity);
     }
 }

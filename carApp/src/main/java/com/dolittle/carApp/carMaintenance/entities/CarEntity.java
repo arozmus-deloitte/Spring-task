@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Table(name = "cars")
 public class CarEntity {
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String type;
     private String brand;
@@ -17,10 +17,9 @@ public class CarEntity {
     private String engineCapacity;
     private String power;
     private String mileage;
-    @OneToOne
-    private ClientEntity client;
+    private long clientId;
 
-    public CarEntity(long id, String type, String brand, String yearOfProduction, String color, String engineCapacity, String power, String mileage) {
+    public CarEntity(long id, String type, String brand, String yearOfProduction, String color, String engineCapacity, String power, String mileage, long clientId) {
         this.id = id;
         this.type = type;
         this.brand = brand;
@@ -29,6 +28,7 @@ public class CarEntity {
         this.engineCapacity = engineCapacity;
         this.power = power;
         this.mileage = mileage;
+        this.clientId = clientId;
     }
 
     public CarEntity() {
@@ -66,7 +66,11 @@ public class CarEntity {
         return mileage;
     }
 
-    public ClientEntity getClient() {
-        return client;
+    public long getClientId() {
+        return clientId;
+    }
+
+    public void setClientId(long clientId) {
+        this.clientId = clientId;
     }
 }
