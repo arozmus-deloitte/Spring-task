@@ -8,19 +8,12 @@ public class CarEntity {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private long id;
-    @Column(name = "type")
     private String type;
-    @Column(name = "brand")
     private String brand;
-    @Column(name = "year_of_production")
     private String yearOfProduction;
-    @Column(name = "color")
     private String color;
-    @Column(name = "engine_capacity")
     private String engineCapacity;
-    @Column(name = "power")
     private String power;
-    @Column(name = "mileage")
     private String mileage;
 
     public CarEntity(long id, String type, String brand, String yearOfProduction, String color, String engineCapacity, String power, String mileage) {

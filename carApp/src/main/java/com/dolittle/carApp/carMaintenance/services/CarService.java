@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.dolittle.carApp.carMaintenance.entities.CarEntity;
 import com.dolittle.carApp.carMaintenance.model.CarTO;
-import org.springframework.http.ResponseEntity;
 
 public interface CarService {
 
