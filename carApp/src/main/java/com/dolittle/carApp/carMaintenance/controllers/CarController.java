@@ -63,7 +63,7 @@ public class CarController {
     public ResponseEntity<Void> assignWorkerToCar(@PathVariable("carId") long carId, @PathVariable("workerId") long workerId) throws Exception {
         CarTO carTO = carService.searchCarById(carId);
         WorkerTO workerTO = workerService.searchWorkerById(workerId);
-
+        carService.assignWorkerToCar(carTO, workerTO);
         return ResponseEntity.ok().build();
     }
 
