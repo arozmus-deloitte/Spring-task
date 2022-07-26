@@ -2,8 +2,6 @@ package com.dolittle.carApp.carMaintenance.services;
 
 import com.dolittle.carApp.carMaintenance.DAO.CarDAO;
 import com.dolittle.carApp.carMaintenance.entities.CarEntity;
-import com.dolittle.carApp.carMaintenance.entities.ClientEntity;
-import com.dolittle.carApp.carMaintenance.model.ClientTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.dolittle.carApp.carMaintenance.model.CarTO;
@@ -85,5 +83,17 @@ public class CarServiceImpl implements CarService {
         CarEntity carEntity = mapToCarEntity(carTO);
         carEntity.setClientId(clientId);
         carDAO.save(carEntity);
+    }
+
+    @Override
+    public CarTO searchCarByTypeAndBrand(String type, String brand) throws Exception{
+        Optional<CarEntity> findCarTO = carDAO.searchCarByTypeAndBrand(type,brand);
+        if(findCarTO.isPresent())
+        {
+            return mapToCarTO(findCarTO.get());
+        }
+        else {
+            throw new Exception("Car not found");
+        }
     }
 }

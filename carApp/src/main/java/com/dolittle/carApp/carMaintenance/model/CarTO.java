@@ -62,7 +62,6 @@ public class CarTO {
     public long getClientId() {
         return clientId;
     }
-
     public void setClientId(long clientId) {
         this.clientId = clientId;
     }

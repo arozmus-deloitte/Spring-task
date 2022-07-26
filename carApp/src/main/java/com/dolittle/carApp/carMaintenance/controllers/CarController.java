@@ -1,13 +1,10 @@
 package com.dolittle.carApp.carMaintenance.controllers;
 
 import com.dolittle.carApp.carMaintenance.entities.CarEntity;
-import com.dolittle.carApp.carMaintenance.entities.ClientEntity;
 import com.dolittle.carApp.carMaintenance.model.CarTO;
-import com.dolittle.carApp.carMaintenance.model.ClientTO;
 import com.dolittle.carApp.carMaintenance.services.CarService;
 import com.dolittle.carApp.carMaintenance.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -51,4 +48,11 @@ public class CarController {
 
         return ResponseEntity.ok().build();
     }
+
+    @GetMapping("/car/{type}/{brand}")
+    public CarTO getCarByTypeAndBrand(@PathVariable("type") String type, @PathVariable("brand") String brand) throws Exception {
+        return carService.searchCarByTypeAndBrand(type, brand);
+    }
+
+
 }

@@ -14,4 +14,5 @@ public interface CarService {
     CarTO searchCarById(long id) throws Exception;
     void deleteCar(long id);
     void assignClientToCar(CarTO carTO, long clientId);
+    CarTO searchCarByTypeAndBrand(String type, String brand) throws Exception;
 }
