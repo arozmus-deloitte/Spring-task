@@ -1,5 +1,8 @@
 package com.dolittle.carApp.carMaintenance.model;
 
+import com.dolittle.carApp.carMaintenance.entities.ClientEntity;
+import com.dolittle.carApp.carMaintenance.entities.WorkerEntity;
+
 public class CarTO {
     private long id;
     private String type;
@@ -9,9 +12,10 @@ public class CarTO {
     private String engineCapacity;
     private String power;
     private String mileage;
-    private long clientId;
+    private ClientEntity clientEntity;
+    private WorkerEntity workerEntity;
 
-    public CarTO(long id, String type, String brand, String yearOfProduction, String color, String engineCapacity, String power, String mileage, long clientId) {
+    public CarTO(long id, String type, String brand, String yearOfProduction, String color, String engineCapacity, String power, String mileage, ClientEntity clientEntity, WorkerEntity workerEntity) {
         this.id = id;
         this.type = type;
         this.brand = brand;
@@ -20,7 +24,8 @@ public class CarTO {
         this.engineCapacity = engineCapacity;
         this.power = power;
         this.mileage = mileage;
-        this.clientId = clientId;
+        this.clientEntity = clientEntity;
+        this.workerEntity = workerEntity;
     }
 
     public long getId() {
@@ -59,10 +64,19 @@ public class CarTO {
         return mileage;
     }
 
-    public long getClientId() {
-        return clientId;
+    public ClientEntity getClientEntity() {
+        return clientEntity;
     }
-    public void setClientId(long clientId) {
-        this.clientId = clientId;
+
+    public void setClientEntity(ClientEntity clientEntity) {
+        this.clientEntity = clientEntity;
+    }
+
+    public WorkerEntity getWorkerEntity() {
+        return workerEntity;
+    }
+
+    public void setWorkerEntity(WorkerEntity workerEntity) {
+        this.workerEntity = workerEntity;
     }
 }

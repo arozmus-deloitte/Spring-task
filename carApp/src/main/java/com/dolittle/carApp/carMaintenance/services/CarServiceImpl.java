@@ -1,7 +1,9 @@
 package com.dolittle.carApp.carMaintenance.services;
-
 import com.dolittle.carApp.carMaintenance.DAO.CarDAO;
 import com.dolittle.carApp.carMaintenance.entities.CarEntity;
+import com.dolittle.carApp.carMaintenance.mapper.Mapper;
+import com.dolittle.carApp.carMaintenance.model.ClientTO;
+import com.dolittle.carApp.carMaintenance.model.WorkerTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.dolittle.carApp.carMaintenance.model.CarTO;
@@ -9,6 +11,8 @@ import com.dolittle.carApp.carMaintenance.model.CarTO;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+
+import static com.dolittle.carApp.carMaintenance.mapper.Mapper.*;
 
 @Service
 public class CarServiceImpl implements CarService {
@@ -22,41 +26,13 @@ public class CarServiceImpl implements CarService {
     public List<CarTO> getAllCars() {
         return carDAO.findAll().
                 stream()
-                .map(this::mapToCarTO)
+                .map(Mapper::mapToCarTO)
                 .collect(Collectors.toList());
-    }
-
-    private CarTO mapToCarTO(CarEntity carEntity) {
-
-        return new CarTO(
-                carEntity.getId(),
-                carEntity.getType(),
-                carEntity.getBrand(),
-                carEntity.getYearOfProduction(),
-                carEntity.getColor(),
-                carEntity.getEngineCapacity(),
-                carEntity.getPower(),
-                carEntity.getMileage(),
-                carEntity.getClientId());
     }
 
     @Override
     public CarEntity saveCar(CarTO carTO) {
         return carDAO.save(mapToCarEntity(carTO));
-    }
-
-    private CarEntity mapToCarEntity(CarTO carTO) {
-
-        return new CarEntity(
-                carTO.getId(),
-                carTO.getType(),
-                carTO.getBrand(),
-                carTO.getYearOfProduction(),
-                carTO.getColor(),
-                carTO.getEngineCapacity(),
-                carTO.getPower(),
-                carTO.getMileage(),
-                carTO.getClientId());
     }
 
 
@@ -79,9 +55,9 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public void assignClientToCar(CarTO carTO, long clientId) {
+    public void assignClientToCar(CarTO carTO, ClientTO clientTO) {
         CarEntity carEntity = mapToCarEntity(carTO);
-        carEntity.setClientId(clientId);
+        carEntity.setClientEntity(mapToClientEntity(clientTO));
         carDAO.save(carEntity);
     }
 
@@ -96,4 +72,12 @@ public class CarServiceImpl implements CarService {
             throw new Exception("Car not found");
         }
     }
+
+    @Override
+    public void assignWorkerToCar(CarTO carTO, WorkerTO workerTO) {
+        CarEntity carEntity = mapToCarEntity(carTO);
+        carEntity.setWorkerEntity(mapToWorkerEntity(workerTO));
+        carDAO.save(carEntity);
+    }
+
 }

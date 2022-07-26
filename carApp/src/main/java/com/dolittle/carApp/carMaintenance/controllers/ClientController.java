@@ -1,8 +1,5 @@
 package com.dolittle.carApp.carMaintenance.controllers;
-
-import com.dolittle.carApp.carMaintenance.entities.CarEntity;
 import com.dolittle.carApp.carMaintenance.entities.ClientEntity;
-import com.dolittle.carApp.carMaintenance.model.CarTO;
 import com.dolittle.carApp.carMaintenance.model.ClientTO;
 import com.dolittle.carApp.carMaintenance.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,46 +1,31 @@
 package com.dolittle.carApp.carMaintenance.services;
-
 import com.dolittle.carApp.carMaintenance.DAO.ClientDAO;
 import com.dolittle.carApp.carMaintenance.entities.ClientEntity;
+import com.dolittle.carApp.carMaintenance.mapper.Mapper;
 import com.dolittle.carApp.carMaintenance.model.ClientTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import static com.dolittle.carApp.carMaintenance.mapper.Mapper.*;
 
 @Service
 public class ClientServiceImpl implements ClientService {
     @Autowired
     private ClientDAO clientDAO;
 
+    @Override
     public List<ClientTO> getAllClients(){
         return clientDAO.findAll()
                 .stream()
-                .map(this::mapToClientTO)
+                .map(Mapper::mapToClientTO)
                 .collect(Collectors.toList());
         }
-
-    private ClientTO mapToClientTO(ClientEntity clientEntity)
-    {
-        return new ClientTO(clientEntity.getId(), clientEntity.getName(), clientEntity.getLastName(), clientEntity.getResidence(), clientEntity.getDateOfBirth(), clientEntity.getPhoneNumber(), clientEntity.getCardNumber());
-    }
 
     @Override
     public ClientEntity saveClient(ClientTO clientTO) {
         return clientDAO.save(mapToClientEntity(clientTO));
-    }
-
-    private ClientEntity mapToClientEntity(ClientTO clientTO) {
-        return new ClientEntity(
-                clientTO.getId(),
-                clientTO.getName(),
-                clientTO.getLastName(),
-                clientTO.getResidence(),
-                clientTO.getDateOfBirth(),
-                clientTO.getPhoneNumber(),
-                clientTO.getCardNumber());
     }
 
     @Override
